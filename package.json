@@ -1,0 +1,38 @@
+{
+  "name": "@0xfacet/create-dapp",
+  "version": "0.1.6",
+  "description": "Create a new Facet dapp with RainbowKit, wagmi, and Next.js",
+  "main": "index.js",
+  "bin": {
+    "create-dapp": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "template"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "facet",
+    "dapp",
+    "ethereum",
+    "web3",
+    "create-dapp"
+  ],
+  "author": "0xFacet",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^8.2.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0xFacet/create-facet-dapp.git"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
