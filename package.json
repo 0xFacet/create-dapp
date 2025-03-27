@@ -1,6 +1,6 @@
 {
   "name": "@0xfacet/create-dapp",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Create a new Facet dapp with RainbowKit, wagmi, and Next.js",
   "main": "index.js",
   "bin": {
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/0xFacet/create-facet-dapp.git"
+    "url": "https://github.com/0xFacet/create-dapp.git"
   },
   "engines": {
     "node": ">=16.0.0"
