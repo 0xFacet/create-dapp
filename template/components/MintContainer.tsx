@@ -6,19 +6,34 @@ import Image from "next/image";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { nftCollectionAbi } from "@/constants/abi";
 import { useWriteFacetContract } from "@0xfacet/sdk";
+import { createPublicClient, http } from "viem";
+import { l2Network } from "../app/network";
 
 export function MintContainer() {
   const { writeFacetContractAsync } = useWriteFacetContract();
   const { isConnected, address } = useAccount();
 
+  const publicClient = createPublicClient({
+    chain: l2Network,
+    transport: http(),
+  });
+
   const handleMint = async () => {
     if (address) {
-      const hash = await writeFacetContractAsync({
-        address: "0x4ee6e331c20baec0b4170f2caf10b2d527e599bb",
-        functionName: "mint",
-        abi: nftCollectionAbi,
-      });
-      console.log(hash);
+      try {
+        const hash = await writeFacetContractAsync({
+          address: "0x4ee6e331c20baec0b4170f2caf10b2d527e599bb",
+          functionName: "mint",
+          abi: nftCollectionAbi,
+        });
+        console.log("Transaction hash:", hash);
+
+        // Wait for transaction receipt
+        const receipt = await publicClient.waitForTransactionReceipt({ hash });
+        console.log("Transaction successful:", receipt);
+      } catch (error) {
+        console.error("Transaction failed:", error);
+      }
     }
   };
 

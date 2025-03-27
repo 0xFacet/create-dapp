@@ -80,6 +80,13 @@ async function run() {
     const templatePath = path.join(__dirname, "../template");
     fs.copySync(templatePath, targetPath);
 
+    // Create .env file with network configuration
+    log(chalk.cyan(`📝 Creating .env file with network configuration`));
+    fs.writeFileSync(
+      path.join(targetPath, ".env"),
+      `NEXT_PUBLIC_NETWORK="sepolia"`
+    );
+
     // Update package.json - using fs.readFileSync instead of require to avoid path issues
     const packageJsonPath = path.join(targetPath, "package.json");
     const packageJsonContent = fs.readFileSync(packageJsonPath, "utf8");
